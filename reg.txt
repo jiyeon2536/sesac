@@ -1,2 +1,12 @@
+<<<<<<< HEAD
 register
 home
+=======
+dfs
+sisisi
+asdfasdfasdfasdfasdf
+
+dfdfdfd
+master nananan
+brrrrr
+>>>>>>> parent of 657f06b (de 2)

@@ -17,8 +17,10 @@ function unshift(array, ...args) {
 	return [...args, ...array]
 }
 
+// 원래 shift 는 shift 된 친구들을 반환함 (pop처럼)
+
 function shift(array, length = 1) {
-	return array.slice(length)
+	return [array.slice(0, length), array.slice(length)]
 }
 
 assert.deepStrictEqual(push(arr, 5, 6), [1, 2, 3, 4, 5, 6])
@@ -26,6 +28,9 @@ assert.deepStrictEqual(pop(arr), 4)
 assert.deepStrictEqual(pop(arr, 2), [3, 4]) // 2개 팝!
 assert.deepStrictEqual(unshift(arr, 0), [0, 1, 2, 3, 4])
 assert.deepStrictEqual(unshift(arr, 7, 8), [7, 8, 1, 2, 3, 4])
-assert.deepStrictEqual(shift(arr), [2, 3, 4])
-assert.deepStrictEqual(shift(arr, 2), [3, 4]) // 2개 shift
+assert.deepStrictEqual(shift(arr), [[1], [2, 3, 4]])
+assert.deepStrictEqual(shift(arr, 2), [
+	[1, 2],
+	[3, 4],
+]) // 2개 shift
 assert.deepStrictEqual(arr, [1, 2, 3, 4])

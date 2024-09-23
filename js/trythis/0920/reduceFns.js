@@ -21,9 +21,9 @@ assert.deepStrictEqual(
 	[1, 8, 27, 64, 125]
 )
 
-const fnReducer = (arr, fns) => arr.map((el) => fns.reduce((acc, curFn) => curFn(el)))
+const fnReduce = (arr, fns) => arr.map((el) => fns.reduce((acc, curFn) => curFn(el)))
 
-fnReducer(arr, fns)
+fnReduce(arr, fns)
 
 // TryThis. 수행 순서를 자유롭게 변경하도록 해보세요. ??
 

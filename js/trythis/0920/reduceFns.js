@@ -27,9 +27,10 @@ fnReduce(arr, fns)
 
 // TryThis. 수행 순서를 자유롭게 변경하도록 해보세요. ??
 
-// [square, sqrt, cube].reduce((acc, curFn) => curFn(el))
-// [cube, square, sqrt].reduce((acc, curFn) => curFn(el))
+const xr2 = arr.map((a) => [square, sqrt, cube].reduce((acc, fn) => fn(acc), a))
+const xr3 = arr.map((a) => [cube, square, (n) => n + 1].reduce((acc, fn) => fn(acc), a))
 
+console.log(xr3)
 // (v) 주소검색              fns = [f주소검색, f나이검색]
 // ()  이름검색              search(users, fns)
 // (v) 나이검색

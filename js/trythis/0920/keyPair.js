@@ -5,14 +5,22 @@
 
 const assert = require('assert')
 
-function keyPair(arr, N) {
-	let obj = {}
-	arr.forEach((el, idx) => (obj[el] = idx)) // 키: 숫자, 값 : 인덱스
+// function keyPair(arr, N) {
+// 	let obj = {}
+// 	arr.forEach((el, idx) => (obj[el] = idx)) // 키: 숫자, 값 : 인덱스
 
-	for (const [k, v] of Object.entries(obj)) {
-		if (obj[N - k]) {
-			return [v, obj[N - k]] // 현재의 인덱스, 짝꿍의 인덱스
-		}
+// 	for (const [k, v] of Object.entries(obj)) {
+// 		if (obj[N - k]) {
+// 			return [v, obj[N - k]] // 현재의 인덱스, 짝꿍의 인덱스
+// 		}
+// 	}
+// }
+
+const keyPair = (arr, n) => {
+	const cache = {}
+	for (let i = 0; i < arr.length; i++) {
+		if (n - arr[i] in cache) return [cache[n - arr[i]], i] // 짝궁의 인덱스
+		cache[arr[i]] = i
 	}
 }
 
@@ -25,4 +33,4 @@ keyPair([1, 2, 3, 4, 5, 7], 9) // [3, 4]  or [1, 5]
 assert.deepStrictEqual(keyPair([1, 3, 4, 5], 7), [1, 2])
 assert.deepStrictEqual(keyPair([1, 4, 45, 6, 10, 8], 16), [3, 4])
 assert.deepStrictEqual(keyPair([1, 2, 4, 3, 6], 10), [2, 4])
-assert.deepStrictEqual(keyPair([1, 2, 3, 4, 5, 7], 9), [1, 5])
+assert.deepStrictEqual(keyPair([1, 2, 3, 4, 5, 7], 9), [3, 4])

@@ -10,15 +10,15 @@ const park = { id: 4, name: 'Park' }
 const users = [kim, lee, park] // 오염되면 안됨!!
 
 users.addUser = function (user) {
-	return [...users, user]
+	return [...this, user]
 }
 
 users.removeUser = function (user) {
-	return users.filter((el) => el !== user)
+	return this.filter(({ id }) => id !== user.id)
 }
 
 users.changeUser = function (from, to) {
-	return users.map((el) => (el === from ? to : el))
+	return this.map((user) => (user.id === from.id ? to : user))
 }
 
 Object.defineProperty(users, 'addUser', { enumerable: false })

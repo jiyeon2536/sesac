@@ -11,6 +11,15 @@ const reduce = (arr, fn, initValue) => {
 	return acc
 }
 
+const reduce1 = (arr, fn, initValue = arr[0]) => {
+	let startIdx = 0
+	let acc = initValue ?? (startIdx++, arr[0])
+	for (let i = startIdx; i < arr?.length; i += 1) {
+		acc = fn(acc, arr[i])
+	}
+	return acc
+}
+
 assert.strictEqual(
 	reduce([1, 2, 3], (a, b) => a + b, 0),
 	6

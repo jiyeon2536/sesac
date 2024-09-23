@@ -12,6 +12,12 @@ function deleteArray(array, arg1, arg2) {
 	return array.filter((el) => el[arg1] !== arg2)
 }
 
+const deleteArray = (arr, startOrKey, endOrValue = arr?.length) => {
+	if (!arr || !Array.isArray(arr)) return []
+	// end = end ?? arr.length - 1 // undefined나 null 이면
+	if (typeof startOrkey === 'number') return arr.filter((_, idx) => idx < startOrKey || idx > endOrValue)
+}
+
 assert.deepStrictEqual(deleteArray(arr, 2), [1, 2])
 assert.deepStrictEqual(deleteArray(arr, 1, 3), [1, 4])
 assert.deepStrictEqual(arr, [1, 2, 3, 4])

@@ -2,26 +2,32 @@
 // 다음과 같은 push, pop, shift, unshift 를 순수 함수로 작성하시오.
 
 const assert = require('assert')
-// function push(array, …args) {}
 const arr = [1, 2, 3, 4]
 
 function push(array, ...args) {
 	return [...array, ...args]
 }
 
+const push = (arr, ...args) => [...arr, ...args]
+
 function pop(array, length) {
 	return length ? array.slice(length * -1) : array[array.length - 1]
 }
+
+const pop = (arr, cnt = 1) => (cnt === 1 ? arr.at(-cnt) : arr.slice(-cnt))
 
 function unshift(array, ...args) {
 	return [...args, ...array]
 }
 
-// 원래 shift 는 shift 된 친구들을 반환함 (pop처럼)
+const unshift = (arr, ...args) => [...args, ...arr]
 
+// [shift되는 원소들, 남은 원소들]
 function shift(array, length = 1) {
 	return [array.slice(0, length), array.slice(length)]
 }
+
+const shift = (arr, cnt = 1) => [arr.slice(0, cnt), arr.slice(cnt)]
 
 assert.deepStrictEqual(push(arr, 5, 6), [1, 2, 3, 4, 5, 6])
 assert.deepStrictEqual(pop(arr), 4)

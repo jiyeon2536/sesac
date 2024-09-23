@@ -20,11 +20,12 @@ function range(start, end, step = start > end ? -1 : 1) {
 	if ((start - end) * step > 0) return []
 	if (end === undefined) {
 		if (start === 0) return [0]
-		start > 0 ? ([end, start] = [start, 0]) : (end = -1)
+		start > 0 ? ([end, start] = [start, 1]) : (end = -1)
 	}
-
-	return Array.from({ length: Math.floor(Math.abs(start - end) + 1) / Math.abs(step) }, (_, idx) => start + idx * step)
+	return Array.from({ length: Math.floor(Math.abs(start - end) / Math.abs(step) + 1) }, (_, idx) => start + idx * step)
 }
+
+// { length: Math.floor(Math.abs(start - end) + 1) / Math.abs(step) }
 
 // range(1, 10, 1) // [1, 2, 3, 4,  5, 6, 7, 8, 9, 10]
 // range(1, 10, 2) // [1, 3, 5, 7, 9]
@@ -55,8 +56,6 @@ assert.deepStrictEqual(range(5, 5, -1), [5])
 assert.deepStrictEqual(range(5, 5), [5])
 assert.deepStrictEqual(range(0, 0, 5), [0])
 assert.deepStrictEqual(range(1, 5, -1), [])
-
-// 여기까지 통과
 
 assert.deepStrictEqual(range(1, 5, 6), [1])
 assert.deepStrictEqual(range(0, 5), [0, 1, 2, 3, 4, 5])

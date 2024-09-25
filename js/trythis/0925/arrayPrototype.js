@@ -15,16 +15,16 @@ Array.prototype.findBy = function (key, value) {
 	return this.find((el) => el[key] === value)
 }
 Array.prototype.filterBy = function (key, value, isInclude = false) {
-	return this.filter((el) => (isInclude ? a[key]?.includes(val) : el[key] === value))
+	return this.filter((el) => (isInclude ? el[key]?.includes(value) : el[key] === value))
 }
 
 Array.prototype.rejectBy = function (key, value, isInclude = false) {
-	return
+	return this.filter((el) => (isInclude ? !el[key]?.includes(value) : el[key] !== value))
 }
 
 Array.prototype.sortBy = function (key) {
-	const [k, order] = key.split(':')
-	if (order === 'desc') return this.sort((a, b) => (a[k] < b[k] ? 1 : -1))
+	const [k, direction] = key.split(':')
+	if (direction === 'desc') return this.sort((a, b) => (a[k] < b[k] ? 1 : -1))
 	return this.sort((a, b) => (a[k] < b[k] ? -1 : 1))
 }
 
@@ -39,10 +39,12 @@ Object.defineProperties(Array.prototype, {
 	},
 	lastObject: {
 		get() {
-			return this[this.length - 1]
+			return this.at(-1)
+			// return this[this.length - 1]
 		},
 		set(value) {
-			this[this.length - 1] = value
+			this[this?.length - 1] = value
+			// this.with(-1, value) // 순수함수라서 안됨
 		},
 	},
 })
@@ -55,9 +57,8 @@ assert.deepStrictEqual(users.mapBy('name'), ['Hing', 'Lee', 'Kim']) // 이름만
 assert.deepStrictEqual(users.filterBy('id', 2), [kim]) // id가 이거인 거의 이름만 주삼
 assert.deepStrictEqual(users.filterBy('name', 'i', true), [hong, kim]) // key, value일부, isInclude
 
-// assert.deepStrictEqual(users.rejectBy('id', 2), [hong, lee]) // id가 2가 아닌거
-// assert.deepStrictEqual(users.rejectBy('name', 'i', false), [hong, kim]) // ????
-// assert.deepStrictEqual(users.rejectBy('name', 'i', true), [lee]) //
+assert.deepStrictEqual(users.rejectBy('id', 2), [hong, lee]) // id가 2가 아닌거
+assert.deepStrictEqual(users.rejectBy('name', 'i', true), [lee]) //
 assert.deepStrictEqual(users.findBy('name', 'Kim'), kim) // 하나만 나옴,
 assert.deepStrictEqual(users.sortBy('name:desc'), [lee, kim, hong])
 assert.deepStrictEqual(users.sortBy('name'), [hong, kim, lee])

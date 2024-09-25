@@ -8,31 +8,19 @@ const kim = { id: 2, name: 'Kim' }
 const lee = { id: 3, name: 'Lee' }
 const users = [hong, lee, kim]
 
-Array.prototype.mapBy = function (key) {
-	return this.map((el) => el[key])
+Array.prototype.mapBy = function (prop) {
+	return this.map((el) => el[prop])
 }
 Array.prototype.findBy = function (key, value) {
 	return this.find((el) => el[key] === value)
 }
-Array.prototype.filterBy = function (key, value, isInclude = true) {
-	return this.filter((el) => {
-		if (isInclude) {
-			if (String(el[key]).includes(value)) return el
-		} else {
-			if (!String(el[key]).includes(value)) return el
-		}
-	})
+Array.prototype.filterBy = function (key, value, isInclude = false) {
+	return this.filter((el) => (isInclude ? a[key]?.includes(val) : el[key] === value))
 }
 
-Array.prototype.rejectBy = function (key, value, isInclude = true) {
-	return this.filter((el) => {
-		if (isInclude) {
-			if (!String(el[key]).includes(value)) return el
-		} else {
-			if (String(el[key]).includes(value)) return el
-		}
-	})
-} // 모르겠습니다
+Array.prototype.rejectBy = function (key, value, isInclude = false) {
+	return
+}
 
 Array.prototype.sortBy = function (key) {
 	const [k, order] = key.split(':')

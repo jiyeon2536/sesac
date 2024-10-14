@@ -32,6 +32,18 @@
 					}
 				}
 
+				const throttle = (cb, delay) => {
+					let timer
+					return (tag, ...args) => {
+						if (timer) return
+						timer = setTimeout(() => {
+							const res = cb(...args)
+							tag.innerText = res
+							timer = null
+						}, delay)
+					}
+				}
+
 				const $body = document.querySelector('body')
 
 				function createSubjectSelector(subject, getNextWeek) {
@@ -48,9 +60,15 @@
 						$span.innerText = res
 					}, 500)
 
+					const act1 = throttle(getNextWeek, 500)
+
 					$input.addEventListener('click', () => {
-						const res = getNextWeek()
-						act(res)
+						if (subject === '국어') {
+							const res = getNextWeek()
+							act(res)
+						} else if (subject === '수학') {
+							act1($span)
+						}
 					})
 
 					$body.appendChild($div)
@@ -66,10 +84,7 @@
 </html>
 <!-- 
 <script>
-	// 	1. 지난 번 subject.html에서,
-	// 	   국어 수업은 debounce로 클릭하고,
-	// 	   수학 수업은 throttle로 클릭하도록 구현하시오.
-	// 	   (각 0.5초 딜레이)
+
 	// 	2. 지난 번 subject.html에서, 검색어 입력 상자를 만들고,
 	// 	입력에 0.5초 debounce 걸기 - 검색(출력).
 
@@ -78,22 +93,5 @@
 	// 2022-09-01T07:55:30.747Z search>> 홍길
 	// 2022-09-01T07:55:32.058Z search>> 홍길동
 
-	const throttle = (cb, delay) => {
-		let timer
-		return (...args) => {
-			if (timer) return
-			timer = setTimeout(() => {
-				cb(...args)
-				timer = null
-			}, delay)
-		}
-	}
-	const act1 = throttle((a) => a + 1, 1000)
-	act1(1)
-	// 1초 동안 n번 호출 => 실행은 1회만!
-	// 10초 동안 n번 호출 => 실행은 10회만!
-	// 매 1초 마다 => cb(100) 실행
-	act1(100)
 
-	// * delay 기간 별 1회 호출 보장!
 </script> -->

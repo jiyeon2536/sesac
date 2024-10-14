@@ -5,8 +5,11 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Document</title>
 		<style>
-			.subject {
-				margin-bottom: 10px;
+			.mb {
+				margin-bottom: 20px;
+			}
+			.mt {
+				margin-top: 20px;
 			}
 		</style>
 	</head>
@@ -52,7 +55,7 @@
 					const $input = document.createElement('input')
 					$input.setAttribute('type', 'button')
 					$input.setAttribute('value', `${subject} 수업 요일 선택>`)
-					$div.classList.add('subject')
+					$div.classList.add('mb')
 
 					$span.innerText = '요일을 선택하세요'
 
@@ -78,20 +81,22 @@
 
 				createSubjectSelector('국어', createGnwFn())
 				createSubjectSelector('수학', createGnwFn())
+
+				const $searchDiv = document.createElement('div')
+				$searchDiv.classList.add('mt')
+
+				const $inputBox = document.createElement('input')
+				$inputBox.setAttribute('type', 'text')
+
+				const act2 = debounce((e) => {
+					console.log(new Date(), 'search>>', e.target.value)
+				}, 500)
+
+				$inputBox.addEventListener('input', (e) => act2(e))
+
+				$body.appendChild($searchDiv)
+				$searchDiv.appendChild($inputBox)
 			})
 		</script>
 	</body>
 </html>
-<!-- 
-<script>
-
-	// 	2. 지난 번 subject.html에서, 검색어 입력 상자를 만들고,
-	// 	입력에 0.5초 debounce 걸기 - 검색(출력).
-
-	//     // 검색어 입력시 console 창 내용    $inputBox.oninput = debounce(...)
-
-	// 2022-09-01T07:55:30.747Z search>> 홍길
-	// 2022-09-01T07:55:32.058Z search>> 홍길동
-
-
-</script> -->

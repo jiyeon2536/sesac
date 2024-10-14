@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			.subject {
+				margin-bottom: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<script>
+			document.addEventListener('DOMContentLoaded', () => {
+				const WEEKS = '일월화수목금토'
+
+				const createGnwFn = () => {
+					let widx = -1
+					return function getNextWeek() {
+						widx += 1
+						if (widx >= WEEKS.length) widx = 0
+						return `${WEEKS[widx]}`
+					}
+				}
+
+				const debounce = (cb, delay) => {
+					let timer
+					return (...args) => {
+						if (timer) clearTimeout(timer)
+						timer = setTimeout(cb, delay, ...args)
+					}
+				}
+
+				const $body = document.querySelector('body')
+
+				function createSubjectSelector(subject, getNextWeek) {
+					const $div = document.createElement('div')
+					const $span = document.createElement('span')
+					const $input = document.createElement('input')
+					$input.setAttribute('type', 'button')
+					$input.setAttribute('value', `${subject} 수업 요일 선택>`)
+					$div.classList.add('subject')
+
+					$span.innerText = '요일을 선택하세요'
+
+					const act = debounce((res) => {
+						$span.innerText = res
+					}, 500)
+
+					$input.addEventListener('click', () => {
+						const res = getNextWeek()
+						act(res)
+					})
+
+					$body.appendChild($div)
+					$body.appendChild($input)
+					$body.appendChild($span)
+				}
+
+				createSubjectSelector('국어', createGnwFn())
+				createSubjectSelector('수학', createGnwFn())
+			})
+		</script>
+	</body>
+</html>
+<!-- 
+<script>
+	// 	1. 지난 번 subject.html에서,
+	// 	   국어 수업은 debounce로 클릭하고,
+	// 	   수학 수업은 throttle로 클릭하도록 구현하시오.
+	// 	   (각 0.5초 딜레이)
+	// 	2. 지난 번 subject.html에서, 검색어 입력 상자를 만들고,
+	// 	입력에 0.5초 debounce 걸기 - 검색(출력).
+
+	//     // 검색어 입력시 console 창 내용    $inputBox.oninput = debounce(...)
+
+	// 2022-09-01T07:55:30.747Z search>> 홍길
+	// 2022-09-01T07:55:32.058Z search>> 홍길동
+
+	const throttle = (cb, delay) => {
+		let timer
+		return (...args) => {
+			if (timer) return
+			timer = setTimeout(() => {
+				cb(...args)
+				timer = null
+			}, delay)
+		}
+	}
+	const act1 = throttle((a) => a + 1, 1000)
+	act1(1)
+	// 1초 동안 n번 호출 => 실행은 1회만!
+	// 10초 동안 n번 호출 => 실행은 10회만!
+	// 매 1초 마다 => cb(100) 실행
+	act1(100)
+
+	// * delay 기간 별 1회 호출 보장!
+</script> -->

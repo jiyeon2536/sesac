@@ -1,6 +1,6 @@
 // 연습문제 5
 // Array.reduce 함수를 고차 함수로 직접 구현하시오.
-const assert = require('assert')
+import assert from 'assert'
 
 const reduce = (arr, fn, initValue) => {
 	let acc = initValue === undefined ? arr[0] : initValue

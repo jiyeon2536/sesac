@@ -1,22 +1,17 @@
 // 연습문제 7
 // 다음과 같은 집합 A, B, C가 있을 때,
 // 각 집합의 교집합, 차집합, 합집합을 구하는 함수를 작성하시오.
-const assert = require('assert')
+import assert from 'assert'
 
 const intersect = (a, b) => {
-	const setA = new Set(a)
-	const setB = new Set(b)
-	return [...setA].filter((el) => setB.has(el))
+	return [...new Set(a)].filter((el) => b.includes(el))
 }
 
 const diff = (a, b) => {
-	const setA = new Set(a)
-	const setB = new Set(b)
-	return [...setA].filter((el) => !setB.has(el))
+	return [...new Set(a)].filter((el) => !b.includes(el))
 }
 
 const union = (a, b) => {
-	// 합집합 -> 둘다 합쳐서 중복제거
 	const setA = new Set(a)
 	for (const el of b) setA.add(el)
 	return [...setA]

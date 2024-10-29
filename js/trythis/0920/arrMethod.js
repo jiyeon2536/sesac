@@ -1,6 +1,7 @@
 // 연습문제 3
 // 아래 users 배열에 대하여 추가/수정/삭제하는 순수 함수를 작성하시오.
-const assert = require('assert')
+import assert from 'assert'
+import { USERS as users } from '../../localdata'
 
 const hong = { id: 1, name: 'Hong' }
 const choi = { id: 5, name: 'Choi' }

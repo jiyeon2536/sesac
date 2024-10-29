@@ -1,4 +1,4 @@
-const assert = require('assert')
+import assert from 'assert'
 
 const arr2 = [1, 2, 3, 4, 5]
 // ex1) [2,3]을 추출

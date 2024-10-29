@@ -1,18 +1,17 @@
-const assert = require('assert')
+import assert from 'assert'
+import { WEEKS } from '../utils/date-utils'
 
 // 연습문제 4
 // getNextWeek 함수는 widx변수에 부수효과가 있다.
 // 이를 부수효과가 없도록 변경하시오
 // hint : closure, IIFE
 
-const weeks = ['일', '월', '화', '수', '목', '금', '토']
-
 const getNextWeek = (() => {
 	let widx = -1
 	return () => {
 		widx += 1
-		if (widx >= weeks.length) widx = 0
-		return `${weeks[widx]}요일`
+		if (widx >= WEEKS.length) widx = 0
+		return `${WEEKS[widx]}요일`
 	}
 })()
 

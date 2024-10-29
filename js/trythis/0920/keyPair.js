@@ -3,7 +3,7 @@
 // 배열에서 합해서 N이 되는 두 개의 요소(index)를 찾는 keyPair(arr, N)
 // 함수를 작성하시오. (O(n^2) 이면 fail!!)
 
-const assert = require('assert')
+import assert from 'assert'
 
 // function keyPair(arr, N) {
 // 	let obj = {}

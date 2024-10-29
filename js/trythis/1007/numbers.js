@@ -1,6 +1,6 @@
 // 연습문제 1
-const moment = require('moment')
-const assert = require('assert')
+import moment from 'moment'
+import assert from 'assert'
 // 1) 1970년 1월 1일과 1970년 1월 2일의 차이를 초로 나타내시오.
 const d1 = new Date(1970, 0, 1)
 const d2 = new Date(1970, 0, 2)

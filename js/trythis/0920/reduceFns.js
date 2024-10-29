@@ -4,7 +4,7 @@
 //  → 배열 각 요소의 제곱근   n => Math.sqrt(n)      [sqrt]
 //  → 배열의 각 요소를 세제곱  n => n ** 3            [cube]
 
-const assert = require('assert')
+import assert from 'assert'
 
 const square = (n) => n ** 2
 const sqrt = (n) => Math.sqrt(n)

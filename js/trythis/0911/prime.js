@@ -1,4 +1,4 @@
-const assert = require('assert')
+import assert from 'assert'
 
 // 1. 특정 배열의 원소 중 소수가 존재하는지 체크하는 함수를 작성하세요
 

@@ -1,6 +1,6 @@
 // 연습문제 4
 // ex1) 배열의 각 원소를 String으로 변환하시오.
-const assert = require('assert')
+import assert from 'assert'
 
 const arr = [1, 2, 3, true]
 const ret1 = arr.map((el) => el?.toString()) // (<이 부분을 작성하시오>);

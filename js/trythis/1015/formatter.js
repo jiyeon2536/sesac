@@ -1,8 +1,10 @@
-const assert = require('assert')
+import assert from 'assert'
 // 문자열 str에서 대문자만 골라 소문자로 변환하세요. (trythis: 대문자 <-> 소문자)
 const upperToLower = (from) => {
 	return from.replace(/([A-Z])/g, (matchedStr, pos, orgStr) => `*${matchedStr.toLowerCase()}*-`)
 }
+
+const swapCase = (str = {}) // 깃헙 참고하기
 
 const tmp = upperToLower('Senior Coding Learning JS')
 // ⇒ '*s*-enior *c*-oding *l*-earning *j*-*s*-'

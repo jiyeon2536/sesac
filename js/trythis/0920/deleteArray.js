@@ -1,6 +1,6 @@
 // 연습문제 2
 // 다음과 같은 deleteArray를 순수 함수로 작성하시오.
-const assert = require('assert')
+import assert from 'assert'
 
 const arr = [1, 2, 3, 4]
 

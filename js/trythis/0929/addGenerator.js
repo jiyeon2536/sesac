@@ -1,7 +1,7 @@
 // 연습문제 1
 // 두 개의 수를 입력 받아 더하기를 수행하는 제너레이터를 작성하시오.
-const readline = require('readline')
-const { stdin: input, stdout: output } = require('process')
+import readline from 'readline'
+import { stdin as input, stdout as output } from 'process'
 
 const rl = readline.createInterface({ input })
 

@@ -50,7 +50,7 @@ console.log(hong.firstName, hong.lastName) // 'Kildong LEE' 출력하면 통과!
 // 모든 Array가 다음 기능을 갖도록 구현하세요.
 // 1) mapBy(), findBy(), filterBy(), rejectBy(), sortBy()
 // 2) firstObject, lastObject
-const assert = require('assert')
+import assert from 'assert'
 
 const hong = { id: 1, name: 'Hing' }
 const kim = { id: 2, name: 'Kim' }

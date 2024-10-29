@@ -13,7 +13,7 @@
 //   ⇒ s - e < 0 && step < 0 ? [] start가 end보다 작은데 step이 음수면 안됨
 //   즉, (s - e) * step > 0
 
-const assert = require('assert')
+import assert from 'assert'
 
 function range(start, end, step = start > end ? -1 : 1) {
 	if (step === 0 || start === end) return [start]

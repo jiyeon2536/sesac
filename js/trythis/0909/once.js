@@ -1,4 +1,4 @@
-const assert = require('assert')
+import assert from 'assert'
 
 function once(cb) {
 	let done = false

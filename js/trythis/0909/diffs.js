@@ -1,4 +1,4 @@
-const assert = require('assert')
+import assert from 'assert'
 ;(function ex6() {
 	function getDiffMillis(dt1, dt2) {
 		const d1 = new Date(dt1)

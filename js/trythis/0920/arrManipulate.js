@@ -1,7 +1,7 @@
 // 연습문제 1
 // 다음과 같은 push, pop, shift, unshift 를 순수 함수로 작성하시오.
 
-const assert = require('assert')
+import assert from 'assert'
 const arr = [1, 2, 3, 4]
 
 function push(array, ...args) {
